@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Search Movie</title>
+</head>
+<body>
+<font face="Courier">
+Please input a keyword for searching: <br>
+<form action="." method="GET">
+<input type="text" name="keyword" value="{{ keyword|escape }}">  
+<input type="submit" value="Search">
+</form>
+{% if queryFlag %}
+    keyword = {{keyword}} <br>
+    query = {{queryStr}} <br>
+    {% if rows|length > 0 %}
+        <br>
+        + ---------- + ---------------------------------------- + -------------------- + <br>
+        | {{mid|safe }} | {{title|safe }} | {{genre|safe }} |<br>
+        + ---------- + ---------------------------------------- + -------------------- + <br>
+        {% for row in rows %}
+            | {{row.mid|safe }} | {{row.title|safe }} | {{row.genre|safe }} |<br>
+        {% endfor %}
+        + ---------- + ---------------------------------------- + -------------------- + <br>
+    {% else %}
+        <br> Empty Set!
+    {% endif %}
+{% endif %}
+</font>
+
+</body>
+</html>

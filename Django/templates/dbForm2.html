@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Search Branch</title>
+</head>
+<body>
+<font face="Courier">
+{% if queryFlag %}
+    mid = {{mid}} <br>
+    query = {{queryStr}} <br>
+    {% if rows|length > 0 %}
+        <br>
+        + ---------- + ---------------------------------------- + ---------------------------------------- + ---------- + <br>
+        | {{bid|safe }} | {{bname|safe }} | {{baddress|safe }} | {{num_copies|safe }} |<br>
+        + ---------- + ---------------------------------------- + ---------------------------------------- + ---------- + <br>
+        {% for row in rows %}
+            | {{row.bid|safe }} | {{row.bname|safe }} | {{row.baddress|safe }} | {{row.num_copies|safe }} |<br>
+        {% endfor %}
+        + ---------- + ---------------------------------------- + ---------------------------------------- + ---------- + <br>
+    {% else %}
+        <br> Empty Set!
+    {% endif %}
+{% endif %}
+</font>
+
+</body>
+</html>

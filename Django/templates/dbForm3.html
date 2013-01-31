@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Search copies</title>
+</head>
+<body>
+<font face="Courier">
+{% if queryFlag %}
+    bid = {{bid}} <br>
+    query = {{queryStr}} <br>
+    {% if rows|length > 0 %}
+        <br>
+        + ---------- + ---------------------------------------- + -------------------- + ---------- + <br>
+        | {{mid|safe }} | {{title|safe }} | {{genre|safe }} | {{num_copies|safe }} |<br>
+        + ---------- + ---------------------------------------- + -------------------- + ---------- + <br>
+        {% for row in rows %}
+            | {{row.mid|safe }} | {{row.title|safe }} | {{row.genre|safe }} | {{row.num_copies|safe }} |<br>
+        {% endfor %}
+        + ---------- + ---------------------------------------- + -------------------- + ---------- + <br>
+    {% else %}
+        <br> Empty Set!
+    {% endif %}
+    <br>
+    baddress = {{baddress}} <br>
+{% endif %}
+</font>
+
+</body>
+</html>
